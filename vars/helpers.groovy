@@ -1,5 +1,6 @@
 #!/usr/bin/env groovy
+import java.time.*
 
 def getCurrentTime(){
-   echo 'Hello World'
+    return LocalDateTime.now();
 }
