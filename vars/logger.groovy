@@ -1,5 +1,7 @@
 #!/usr/bin/env groovy
 
 def call (String message) {
-  sh "echo ${message}"
+  sh '''set +xe 
+        echo ${message}
+      '''
 }
