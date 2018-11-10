@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-def call () {
+def call (String dummy) {
     env["GIT-MESSAGE"]= sh (
     script:"git log --pretty=%s -1",
     returnStdout:true).trim()
