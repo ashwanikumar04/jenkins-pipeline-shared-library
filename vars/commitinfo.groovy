@@ -9,17 +9,16 @@ def call (String dummy) {
     script:"git rev-parse HEAD",
     returnStdout:true).trim()
 
+    shortGitCommit = gitCommit.take(6)
 
     author = sh (
     script:"git --no-pager show -s --format='%an' ${gitCommit}",
     returnStdout:true).trim()
 
     Map<String,String> map = new HashMap<>()
-    map.put("message",message)
-    map.put("commit",gitCommit)
-    map.put("author",author)
-
+    map.put("message", message)
+    map.put("commit", gitCommit)
+    map.put("shortCommit", shortGitCommit)
+    map.put("author", author)
     return map
-
-
 }
