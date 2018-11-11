@@ -1,6 +1,8 @@
 #!/usr/bin/env groovy
 
 def call (String dummy) {
+    sh ''' set +x '''
+
     message= sh (
     script:"git log --pretty=%s -1",
     returnStdout:true).trim()
@@ -18,6 +20,9 @@ def call (String dummy) {
     email = sh (
     script:"git --no-pager show -s --format='%ae' ${gitCommit}",
     returnStdout:true).trim()
+    
+    sh ''' set -x '''
+
 
     Map<String,String> map = new HashMap<>()
     map.put("message", message)
